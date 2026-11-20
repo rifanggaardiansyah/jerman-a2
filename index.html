@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deutsch A2</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f172a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch A2">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--ink:#0f172a;--mute:#5b6478;--line:#dde2ee;--haben:#1d4ed8;--haben-bg:#dbe6ff;--sein:#c2410c;--sein-bg:#ffe6d2;--ok:#15803d;--ok-bg:#d9f5e3;--bad:#b91c1c;--bad-bg:#fde0e0;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b1020;--card:#151c33;--ink:#eef1fa;--mute:#9aa4bd;--line:#27304d;--haben:#8fb0ff;--haben-bg:#1e2d63;--sein:#ffb27a;--sein-bg:#4a2410;--ok:#6ee7a0;--ok-bg:#12382a;--bad:#ff9a9a;--bad-bg:#4a1a1a}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;padding-top:env(safe-area-inset-top,0px);display:flex;flex-direction:column}
+header{padding:16px 20px 8px}
+header h1{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+header p{margin:2px 0 0;color:var(--mute);font-size:.95rem}
+main{flex:1;overflow-y:auto;padding:8px 20px 24px;max-width:560px;width:100%;margin:0 auto}
+nav{display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;background:none;color:var(--mute);font:inherit;font-size:.82rem;padding:10px 4px 8px;cursor:pointer}
+nav button span{display:block;font-size:1.35rem;line-height:1.2}
+nav button[aria-current=true]{color:var(--ink);font-weight:800}
+button:focus-visible{outline:3px solid var(--haben);outline-offset:2px}
+.btn{border:0;border-radius:14px;background:var(--ink);color:var(--bg);font:inherit;font-weight:600;padding:14px 20px;width:100%;cursor:pointer;font-size:1rem}
+.btn.alt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--haben);border-radius:99px;transition:width .4s}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:.9rem;margin:8px 0 12px}
+.flash{background:var(--card);border:2px solid var(--line);border-radius:24px;min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;cursor:pointer;width:100%;font:inherit;color:inherit}
+.flash.haben{border-color:var(--haben)}.flash.sein{border-color:var(--sein)}
+.emoji{font-size:6.5rem;line-height:1.1}
+.de{font-size:2.4rem;font-weight:800;letter-spacing:-.02em;margin:8px 0 0}
+.hint{color:var(--mute);font-size:.9rem;margin-top:12px}
+.pill{display:inline-block;border-radius:99px;padding:4px 14px;font-weight:600;font-size:.95rem}
+.pill.haben{background:var(--haben-bg);color:var(--haben)}.pill.sein{background:var(--sein-bg);color:var(--sein)}
+.pp{font-size:2rem;font-weight:800;margin:10px 0 4px}
+.row{display:flex;gap:10px;margin-top:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+.panel h2{margin:0 0 8px;font-size:1.15rem}
+.panel p{margin:6px 0}
+.sent{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;align-items:flex-end}
+.w{padding:8px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font-weight:600}
+.w.haben{background:var(--haben-bg);border-color:var(--haben);color:var(--haben)}
+.w.sein{background:var(--sein-bg);border-color:var(--sein);color:var(--sein)}
+.w.pp{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);font-size:1rem;margin:0}
+.w.gap{border-style:dashed;background:none;color:var(--mute);font-weight:400}
+.cap{font-size:.8rem;color:var(--mute);margin-top:-2px}
+.q{font-size:1.5rem;font-weight:800;margin:6px 0 16px;letter-spacing:-.01em}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:14px 16px;margin-bottom:10px;font:inherit;font-size:1.05rem;cursor:pointer}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.fb{padding:12px 14px;border-radius:12px;margin:4px 0 14px;font-size:.95rem}
+.fb.ok{background:var(--ok-bg);color:var(--ok)}.fb.no{background:var(--bad-bg);color:var(--bad)}
+.score{font-size:3.4rem;font-weight:800;margin:0}
+.mod{display:flex;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.mod:last-child{border:0}.mod .ic{font-size:1.6rem}.mod b{display:block}.mod small{color:var(--mute)}
+.lock{opacity:.55}
+</style>
+</head>
+<body>
+<header>
+  <h1>Deutsch A2</h1>
+  <p>Modul 1: Mein Wochenende (Perfekt)</p>
+</header>
+<main id="app"></main>
+<nav id="tabs"></nav>
+
+<script>
+var CARDS=[
+ {de:'essen',e:'🍽️',id:'makan',pp:'gegessen',aux:'haben',ex:['Ich','habe','Pizza','gegessen.']},
+ {de:'trinken',e:'🥤',id:'minum',pp:'getrunken',aux:'haben',ex:['Er','hat','Wasser','getrunken.']},
+ {de:'schlafen',e:'😴',id:'tidur',pp:'geschlafen',aux:'haben',ex:['Wir','haben','lange','geschlafen.']},
+ {de:'lesen',e:'📖',id:'membaca',pp:'gelesen',aux:'haben',ex:['Sie','hat','ein Buch','gelesen.']},
+ {de:'kaufen',e:'🛒',id:'membeli',pp:'gekauft',aux:'haben',ex:['Ich','habe','Brot','gekauft.']},
+ {de:'spielen',e:'⚽',id:'bermain',pp:'gespielt',aux:'haben',ex:['Wir','haben','Fußball','gespielt.']},
+ {de:'fahren',e:'🚗',id:'berkendara, pergi (dengan kendaraan)',pp:'gefahren',aux:'sein',ex:['Wir','sind','nach Berlin','gefahren.']},
+ {de:'gehen',e:'🚶',id:'berjalan, pergi',pp:'gegangen',aux:'sein',ex:['Ich','bin','ins Kino','gegangen.']},
+ {de:'fliegen',e:'✈️',id:'terbang',pp:'geflogen',aux:'sein',ex:['Sie','ist','nach Bali','geflogen.']},
+ {de:'aufstehen',e:'⏰',id:'bangun, berdiri',pp:'aufgestanden',aux:'sein',ex:['Er','ist','um 7 Uhr','aufgestanden.']}
+];
+var QUIZ=[
+ {q:'Ich ___ gestern Pizza gegessen.',o:['habe','bin'],a:0,why:'Essen tidak berpindah tempat, jadi pakai haben.'},
+ {q:'Wir ___ nach Berlin gefahren.',o:['haben','sind'],a:1,why:'Fahren = berpindah tempat, jadi pakai sein.'},
+ {q:'Partizip II dari kaufen:',o:['gekauft','gekaufen','gegkauft'],a:0,why:'Kata kerja beraturan: ge + kata dasar + t.'},
+ {q:'Partizip II dari schlafen:',o:['geschlaft','geschlafen','gschlafen'],a:1,why:'Kata kerja tidak beraturan: ge + kata dasar + en.'},
+ {q:'Sie ___ um 7 Uhr aufgestanden.',o:['hat','ist'],a:1,why:'Aufstehen = perubahan posisi, jadi pakai sein.'},
+ {q:'Er hat Wasser ___.',o:['getrinkt','getrunken','trunken'],a:1,why:'Trinken adalah kata kerja tidak beraturan: getrunken.'},
+ {q:'Ich bin ins Kino ___.',o:['gegeht','gegangt','gegangen'],a:2,why:'Gehen menjadi gegangen dan memakai sein.'},
+ {q:'Wir haben Fußball ___.',o:['gespielen','gespielt','spielt'],a:1,why:'Spielen beraturan: ge + spiel + t.'}
+];
+var PASS=0.7,KEY='deutsch-a2-m1';
+function load(){try{var v=localStorage.getItem(KEY);return v?JSON.parse(v):{seen:[],best:0,done:false}}catch(e){return{seen:[],best:0,done:false}}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+var S=load(),tab='lernen',ci=0,flipped=false,qi=0,score=0,answered=false,order=[],finished=false;
+var $=function(id){return document.getElementById(id)};
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function pct(){var p=S.seen.length/CARDS.length*0.5+(S.done?0.5:Math.min(S.best,1)*0.5*0.9);return Math.round(p*100)}
+
+function tabs(){
+  var t=[['lernen','🃏','Kartu'],['grammatik','🧩','Tata bahasa'],['quiz','✏️','Kuis'],['progres','📈','Progres']];
+  $('tabs').innerHTML=t.map(function(x){return '<button data-t="'+x[0]+'" aria-current="'+(tab===x[0])+'"><span>'+x[1]+'</span>'+x[2]+'</button>'}).join('');
+  $('tabs').querySelectorAll('button').forEach(function(b){b.onclick=function(){tab=b.dataset.t;if(tab==='quiz'){startQuiz()}render()}});
+}
+function render(){tabs();({lernen:lernen,grammatik:grammatik,quiz:quiz,progres:progres})[tab]();$('app').scrollTop=0}
+
+function lernen(){
+  var c=CARDS[ci];
+  var h='<div class="meta"><span>Kartu '+(ci+1)+' dari '+CARDS.length+'</span><span>Ketuk kartu untuk membalik</span></div>';
+  h+='<div class="bar" style="margin-bottom:14px"><i style="width:'+Math.round(S.seen.length/CARDS.length*100)+'%"></i></div>';
+  if(!flipped){
+    h+='<button class="flash" id="fc"><div class="emoji">'+c.e+'</div><div class="de">'+c.de+'</div><div class="hint">'+c.id+'</div></button>';
+  }else{
+    h+='<button class="flash '+(c.aux==='haben'?'haben':'sein')+'" id="fc"><div class="pill '+(c.aux==='haben'?'haben':'sein')+'">'+c.aux+'</div><div class="pp">'+c.pp+'</div>';
+    h+='<div class="sent" style="justify-content:center">'+c.ex.map(function(w,i){return '<span class="w '+(i===1?c.aux:'')+(i===3?' pp':'')+'">'+w+'</span>'}).join('')+'</div></button>';
+  }
+  h+='<div class="row"><button class="btn alt" id="pv">Sebelumnya</button><button class="btn" id="nx">Berikutnya</button></div>';
+  $('app').innerHTML=h;
+  $('fc').onclick=function(){flipped=!flipped;if(flipped&&S.seen.indexOf(ci)<0){S.seen.push(ci);save()}lernen()};
+  $('pv').onclick=function(){ci=(ci+CARDS.length-1)%CARDS.length;flipped=false;lernen()};
+  $('nx').onclick=function(){ci=(ci+1)%CARDS.length;flipped=false;lernen()};
+}
+
+function grammatik(){
+  var h='<div class="panel"><h2>Perfekt: bentuk lampau percakapan</h2><p>Dipakai untuk bercerita tentang hal yang sudah terjadi. Kata bantu ada di posisi kedua, Partizip II selalu di akhir kalimat.</p>';
+  h+='<div class="sent"><span class="w">Ich</span><span class="w haben">habe</span><span class="w gap">gestern Pizza</span><span class="w pp">gegessen.</span></div>';
+  h+='<div class="sent"><span class="w">Wir</span><span class="w sein">sind</span><span class="w gap">nach Berlin</span><span class="w pp">gefahren.</span></div>';
+  h+='<p class="cap">Biru atau oranye = kata bantu (posisi 2). Hijau = Partizip II (paling akhir).</p></div>';
+  h+='<div class="panel"><h2>Kapan haben, kapan sein?</h2>';
+  h+='<p><span class="pill haben">haben</span> Hampir semua kata kerja: essen, trinken, lesen, kaufen, spielen, schlafen.</p>';
+  h+='<p><span class="pill sein">sein</span> Berpindah tempat atau berubah keadaan: fahren, gehen, fliegen, aufstehen, bleiben.</p></div>';
+  h+='<div class="panel"><h2>Membentuk Partizip II</h2>';
+  h+='<p>Beraturan:</p><div class="sent"><span class="w">ge</span><span class="w gap">kauf</span><span class="w">t</span><span class="cap">= gekauft</span></div>';
+  h+='<p>Tidak beraturan:</p><div class="sent"><span class="w">ge</span><span class="w gap">trunk</span><span class="w">en</span><span class="cap">= getrunken</span></div>';
+  h+='<p>Terpisah (aufstehen):</p><div class="sent"><span class="w">auf</span><span class="w">ge</span><span class="w gap">stand</span><span class="w">en</span><span class="cap">= aufgestanden</span></div></div>';
+  $('app').innerHTML=h;
+}
+
+function startQuiz(){order=shuf(QUIZ.map(function(_,i){return i}));qi=0;score=0;answered=false;finished=false}
+function quiz(){
+  if(!order.length)startQuiz();
+  if(finished){return result()}
+  var q=QUIZ[order[qi]];
+  var h='<div class="meta"><span>Soal '+(qi+1)+' dari '+QUIZ.length+'</span><span>Lulus: '+Math.ceil(PASS*QUIZ.length)+' benar</span></div>';
+  h+='<div class="bar" style="margin-bottom:18px"><i style="width:'+Math.round(qi/QUIZ.length*100)+'%"></i></div><div class="q">'+q.q+'</div>';
+  var idx=q.o.map(function(_,i){return i});
+  q._idx=q._idx||shuf(idx);
+  q._idx.forEach(function(i){h+='<button class="opt" data-i="'+i+'">'+q.o[i]+'</button>'});
+  h+='<div id="fb"></div><button class="btn" id="nq" style="display:none">'+(qi===QUIZ.length-1?'Lihat hasil':'Soal berikutnya')+'</button>';
+  $('app').innerHTML=h;answered=false;
+  $('app').querySelectorAll('.opt').forEach(function(b){b.onclick=function(){
+    if(answered)return;answered=true;var i=+b.dataset.i,ok=i===q.a;if(ok)score++;
+    b.classList.add(ok?'right':'wrong');
+    $('app').querySelectorAll('.opt').forEach(function(x){if(+x.dataset.i===q.a)x.classList.add('right')});
+    $('fb').innerHTML='<div class="fb '+(ok?'ok':'no')+'">'+(ok?'Benar. ':'Belum tepat. ')+q.why+'</div>';
+    $('nq').style.display='block';
+  }});
+  $('nq').onclick=function(){
+    q._idx=null;
+    if(qi<QUIZ.length-1){qi++;quiz()}else{finished=true;S.best=Math.max(S.best,score/QUIZ.length);if(score/QUIZ.length>=PASS)S.done=true;save();quiz()}
+  };
+}
+function result(){
+  var ok=score/QUIZ.length>=PASS;
+  var h='<div class="panel" style="text-align:center"><div class="emoji">'+(ok?'🎉':'💪')+'</div><p class="score">'+score+'/'+QUIZ.length+'</p>';
+  h+='<p>'+(ok?'Lulus! Modul 1 selesai.':'Belum lulus. Pelajari kartu dan tata bahasa, lalu coba lagi.')+'</p></div>';
+  h+='<button class="btn" id="re">Ulangi kuis</button><div style="height:10px"></div><button class="btn alt" id="gp">Lihat progres</button>';
+  $('app').innerHTML=h;
+  $('re').onclick=function(){startQuiz();quiz()};
+  $('gp').onclick=function(){tab='progres';render()};
+}
+
+function progres(){
+  var p=pct();
+  var h='<div class="panel"><h2>Perjalanan A2</h2><div class="bar" style="margin:10px 0 6px"><i style="width:'+Math.round(p/4)+'%"></i></div><p class="cap">'+Math.round(p/4)+'% dari level A2 (1 dari 4 modul tersedia)</p></div>';
+  h+='<div class="panel"><div class="mod"><span class="ic">'+(S.done?'✅':'📘')+'</span><div style="flex:1"><b>Modul 1: Mein Wochenende (Perfekt)</b><small>Kartu '+S.seen.length+'/'+CARDS.length+' &middot; skor terbaik '+Math.round(S.best*100)+'%</small><div class="bar" style="margin-top:6px"><i style="width:'+p+'%"></i></div></div></div>';
+  ['🏠|Modul 2: Meine Wohnung (Wechselpräpositionen)','🧳|Modul 3: Reisen und Verkehr','🩺|Modul 4: Gesundheit (Reflexive Verben)'].forEach(function(m){var a=m.split('|');h+='<div class="mod lock"><span class="ic">🔒</span><div><b>'+a[1]+'</b><small>Segera hadir</small></div></div>'});
+  h+='</div><div class="panel"><h2>Sertifikat A2</h2><p>Selesaikan semua modul A2 untuk mendapatkan sertifikat penyelesaian dalam bentuk PDF. Fitur ini akan ditambahkan di tahap berikutnya.</p></div>';
+  h+='<button class="btn alt" id="rs">Hapus progres</button>';
+  $('app').innerHTML=h;
+  $('rs').onclick=function(){if(confirm('Hapus semua progres di perangkat ini?')){S={seen:[],best:0,done:false};save();ci=0;flipped=false;progres()}};
+}
+render();
+</script>
+</body>
+</html>
